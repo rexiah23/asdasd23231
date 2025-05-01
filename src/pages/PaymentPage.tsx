@@ -244,7 +244,7 @@ export function PaymentPage({ carId: propCarId }: PaymentPageProps) {
   useEffect(() => {
     async function fetchCarDetails() {
       try {
-        const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/cars/${carId}`);
+        const response = await fetch(`${import.meta.env.VITE_API_BASE_URL || "https://sg-supercars.onrender.com"}/cars/${carId}`);
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
@@ -291,7 +291,7 @@ export function PaymentPage({ carId: propCarId }: PaymentPageProps) {
       ];
 
       const response = await fetch(
-        `${import.meta.env.VITE_API_BASE_URL}/stripe/create-payment-intent`,
+        `${import.meta.env.VITE_API_BASE_URL || "https://sg-supercars.onrender.com"}/stripe/create-payment-intent`,
         {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },

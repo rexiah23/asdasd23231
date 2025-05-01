@@ -233,7 +233,7 @@ export function Listings() {
     async function fetchAllCars() {
       try {
         setLoading(true);
-        const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/cars`);
+        const response = await fetch(`${import.meta.env.VITE_API_BASE_URL || "https://sg-supercars.onrender.com"}/cars`);
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
